@@ -84,6 +84,6 @@ class Password:
             messagebox.showinfo("warining", "Usename or old Password not matching")
 
 
-root=Tk()
-Password(root)
-root.mainloop()
+#root=Tk()
+#Password(root)
+#root.mainloop()
