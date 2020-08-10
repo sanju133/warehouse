@@ -3,6 +3,7 @@ from tkinter import*
 from PIL import ImageTk
 #import password
 from home import product
+from password import Password
 from tkinter import messagebox
 import mysql.connector
 try:
@@ -73,14 +74,29 @@ class Please_Login:
 
         mycursor.execute(sql, value)
         myresult = mycursor.fetchall()
+        global id
+        global pw
         for i in myresult:
             id = i[0]
             pw = i[1]
+        #file handling
+        files = open("myOutFile.txt", "w")
+        # write line to output file
+        files.write("id:"+ str(id))
+        files.write(" password:"+str(pw))
+        files.close()
+
+        files = open("myOutFile.txt", 'r')
+        all = files.read()
+        x = all.split(" ")
+        y = x[0].split(":")
+        z = x[1].split(":")
+
 
         if (username1 == "" or rollno1 == ""):
             messagebox.showinfo("Information", "Fill all the fields")
-
-        elif (username1 == id and rollno1 == pw):
+        ##elifelif (username1 == id and rollno1 == pw): for database
+        elif (username1 == y[1] and rollno1 == z[1]):
             self.reg = Toplevel(self.root)
 
             product(self.reg)
@@ -94,18 +110,9 @@ class Please_Login:
 
 
     def changepasswordlogin(self):
-        username = self.uusername.get()
-        password = self.upassword.get()
-        if messagebox.askyesno("Confirm Change password", "Are you sure you want to change password?"):
-            query = "UPDDATE login set username=%s, password=%s"
-            valu = (username, password)
-            mycursor.excute(query, valu)
-            mydb1.commit()
+        self.reg = Toplevel(self.root)
 
-
-        else:
-            return True
-
+        Password(self.reg)
 
 
 root=Tk()
