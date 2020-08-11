@@ -137,6 +137,7 @@ class product:
             contact=self.ucont.get()
             email=self.uemail.get()
             location=self.ulocation.get()
+
             #mycursor.execute("create table if not exists company(name varchar(100) ,contact int(100),email varchar(100),location varchar(100)")
             sql = "INSERT INTO company (name,contact,email,location) VALUES (%s, %s,%s,%s)"
             val=(name,contact,email,location,)
@@ -150,6 +151,7 @@ class product:
             self.ucont.set("")
             self.uemail.set("")
             self.ulocation.set("")
+            
         def deleteCompany(self):
             customer_name= self.uname.get()
             if messagebox.askyesno("Confirm Delete","Are you Sure you want to delete this company?"):

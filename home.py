@@ -20,7 +20,7 @@ class product:
                              width=15)
             self.b2 = Button(self.root, text="MAINFEST", command=self.addmanifest, font=('bahnschrift', 20, 'bold'),
                              width=15)
-            self.b3 = Button(self.root, text="SHIPMENT", command=self.addcustomer, font=('bahnschrift', 20, 'bold'),
+            self.b3 = Button(self.root, text="CUSTOMER", command=self.addcustomer, font=('bahnschrift', 20, 'bold'),
                              width=15)
             self.b4 = Button(self.root, text="WAREHOUSE", command=self.addwarehouse, font=('bahnschrift', 20, 'bold'),
                              width=15)
